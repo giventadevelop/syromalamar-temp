@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Analytics Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+            background-color: #f5f6f7;
+            color: #0b2848;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: #ffffff;
+            padding: 0.5rem 0;
+            box-shadow: #0b28487d 0px 10px 25px -10px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b2848;
+            margin: 0;
+        }
+
+        .logo-section h1 .imp-color {
+            color: #dc3545 !important;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #0b2848;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #dc3545;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(#011e94, #011e94d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 15px;
+        }
+
+        /* Section Title */
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .section-title h6 {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            letter-spacing: 5px;
+            font-size: 24px;
+            font-weight: 300;
+            color: #798daf;
+            position: absolute;
+            left: -50px;
+            margin: 0;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 7px;
+            height: 120%;
+            background-color: #dc3545;
+            position: absolute;
+            left: -30px;
+            top: 0;
+        }
+
+        /* Main Title */
+        .main-title h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0b2848;
+            margin-bottom: 10px;
+        }
+
+        .main-title h1 .imp-color {
+            color: #dc3545 !important;
+        }
+
+        .main-title p {
+            font-size: 20px;
+            color: #506276;
+            margin-bottom: 40px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Stat Card */
+        .stat-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .stat-card:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .stat-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-card-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(#011e94, #011e94d4, #011e94b3, #011e9433);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 26px;
+        }
+
+        .stat-card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b2848;
+            margin-bottom: 5px;
+        }
+
+        .stat-card-label {
+            font-size: 16px;
+            color: #7b869a;
+            font-weight: 300;
+        }
+
+        .stat-card-change {
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .stat-card-change.positive {
+            color: #25d366;
+        }
+
+        .stat-card-change.negative {
+            color: #dc3545;
+        }
+
+        /* Chart Section */
+        .chart-section {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            margin-bottom: 60px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .chart-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0b2848;
+        }
+
+        .chart-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chart-option {
+            padding: 5px 10px;
+            border: 2px solid #315984;
+            background: transparent;
+            color: #0b2848;
+            border-radius: 0;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .chart-option.active,
+        .chart-option:hover {
+            background: #315984;
+            color: #fff;
+        }
+
+        .chart-placeholder {
+            height: 400px;
+            background: linear-gradient(-90deg, #dc354662, #ff790348);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0b2848;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* Data Table Section */
+        .data-section {
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .data-table-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .table-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0b2848;
+        }
+
+        .primary-button {
+            text-decoration: none;
+            color: #fff;
+            background: #dc3545;
+            padding: 10px 20px;
+            border-right: 7px solid #be1929;
+            font-weight: 300;
+            display: inline-block;
+            transition: 1s;
+        }
+
+        .primary-button:hover {
+            background: #be1929;
+            border-right: 6px solid #dc3545;
+            color: #fff;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+            color: #0b2848;
+            border-bottom: 2px solid #eaebef;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eaebef;
+            color: #506276;
+        }
+
+        .data-table tr:hover {
+            background: #dc354533;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #25d36633;
+            color: #25d366;
+        }
+
+        .badge-warning {
+            background: #ffc81533;
+            color: #ff7903;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background: #dc354533;
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 60px;
+        }
+
+        .quick-actions-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #77121b;
+            margin-bottom: 30px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .action-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #0b2848;
+            transition: 0.5s;
+            border-right: 1px solid #0b2848;
+        }
+
+        .action-card:hover {
+            color: #011e94;
+        }
+
+        .action-card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .action-card h6 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 991px) {
+            .section-title {
+                padding-left: 0;
+            }
+
+            .section-title h6 {
+                writing-mode: horizontal-tb;
+                transform: none;
+                position: relative;
+                left: 0;
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+
+            .section-title::after {
+                width: 4px;
+                height: 100%;
+                left: -15px;
+            }
+
+            .data-section {
+                padding-left: 15px;
+            }
+
+            .main-title h1 {
+                font-size: calc(1.5rem + 1vw);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .nav-links {
+                display: none;
+            }
+
+            .dashboard-container {
+                padding: 40px 15px;
+            }
+
+            .chart-placeholder {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>Creator<span class="imp-color">Analytics</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-video"></i> Content</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Audience</a></li>
+                    <li><a href="#"><i class="fas fa-dollar-sign"></i> Revenue</a></li>
+                </ul>
+            </nav>
+            <div class="user-section">
+                <i class="fas fa-bell" style="color: #0b2848; font-size: 20px;"></i>
+                <div class="user-avatar">JD</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-container">
+        <!-- Welcome Section -->
+        <div class="section-title">
+            <h6>Overview</h6>
+        </div>
+        <div class="main-title">
+            <h1>Creator <span class="imp-color">Dashboard</span></h1>
+            <p>Track your performance and grow your audience</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value">124.5K</div>
+                <div class="stat-card-label">Total Views</div>
+                <div class="stat-card-change positive">
+                    <i class="fas fa-arrow-up"></i> +12.5% from last month
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value">8.2K</div>
+                <div class="stat-card-label">Subscribers</div>
+                <div class="stat-card-change positive">
+                    <i class="fas fa-arrow-up"></i> +8.3% from last month
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value">45.8K</div>
+                <div class="stat-card-label">Engagements</div>
+                <div class="stat-card-change positive">
+                    <i class="fas fa-arrow-up"></i> +15.2% from last month
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value">$3,245</div>
+                <div class="stat-card-label">Revenue</div>
+                <div class="stat-card-change positive">
+                    <i class="fas fa-arrow-up"></i> +22.1% from last month
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h2 class="chart-title">Performance Overview</h2>
+                <div class="chart-options">
+                    <button class="chart-option active">7 Days</button>
+                    <button class="chart-option">30 Days</button>
+                    <button class="chart-option">90 Days</button>
+                </div>
+            </div>
+            <div class="chart-placeholder">
+                <i class="fas fa-chart-line" style="font-size: 48px; margin-right: 15px;"></i>
+                Analytics Chart - Views, Engagement, and Revenue Trends
+            </div>
+        </div>
+
+        <!-- Data Table Section -->
+        <div class="data-section">
+            <div class="section-title">
+                <h6>Recent</h6>
+            </div>
+            <div class="data-table-card">
+                <div class="table-header">
+                    <h2 class="table-title">Recent Content</h2>
+                    <a href="#" class="primary-button">
+                        <span>View All</span>
+                        <i class="fa-solid fa-arrow-right-long ms-3"></i>
+                    </a>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Content Title</th>
+                            <th>Views</th>
+                            <th>Engagement</th>
+                            <th>Revenue</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>How to Build Your Creator Brand</td>
+                            <td>12,458</td>
+                            <td>1,234</td>
+                            <td>$456</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>5 Content Creation Tips</td>
+                            <td>9,832</td>
+                            <td>892</td>
+                            <td>$342</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Monetization Strategies</td>
+                            <td>7,645</td>
+                            <td>654</td>
+                            <td>$278</td>
+                            <td><span class="badge badge-warning">Draft</span></td>
+                        </tr>
+                        <tr>
+                            <td>Audience Growth Hacks</td>
+                            <td>15,234</td>
+                            <td>1,456</td>
+                            <td>$521</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Behind the Scenes</td>
+                            <td>6,789</td>
+                            <td>567</td>
+                            <td>$198</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3 class="quick-actions-title">Quick Actions</h3>
+            <div class="actions-grid">
+                <a href="#" class="action-card">
+                    <div class="action-card-icon">
+                        <i class="fas fa-video" style="font-size: 24px; color: #011e94;"></i>
+                    </div>
+                    <h6>Create Content</h6>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-card-icon">
+                        <i class="fas fa-chart-bar" style="font-size: 24px; color: #011e94;"></i>
+                    </div>
+                    <h6>View Reports</h6>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-card-icon">
+                        <i class="fas fa-bullhorn" style="font-size: 24px; color: #011e94;"></i>
+                    </div>
+                    <h6>Promote Content</h6>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-card-icon">
+                        <i class="fas fa-cog" style="font-size: 24px; color: #011e94;"></i>
+                    </div>
+                    <h6>Settings</h6>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple chart option toggle
+        document.querySelectorAll('.chart-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.chart-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

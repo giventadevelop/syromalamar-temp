@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Syro Malabar Church </title>
+
+  <!-- meta -->
+  <meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=.9">
+
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:url" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:image:width" content="">
+<meta property="og:image:height" content="">
+  <!-- css -->
+   <!--favicons-->
+ <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+ <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+ <link rel="mask-icon" href="assets/images/favicon/safari-pinned-tab.svg" color="#2b5797">
+
+
+
+ <!--Bootstrap-->
+ <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+ <!--Swiper Slider-->
+ <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+ <!--Tiny Slider-->
+ <link rel="stylesheet" href="assets/css/tiny-slider.css">
+ <!--Animate CSS-->
+ <link rel="stylesheet" href="assets/css/animate.min.css">
+ <!--Glight CSS-->
+ <link rel="stylesheet" href="assets/css/glightbox.min.css">
+ <!--Glight Player CSS-->
+ <link rel="stylesheet" href="assets/css/plyr.min.css">
+ <!--Custom CSS-->
+ <link rel="stylesheet" href="assets/css/style.css">
+ <!--Custom CSS INNER PAGE-->
+ <link rel="stylesheet" href="assets/css/style-inner.css">
+
+ <!--Google Font-->
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css">
+ <!--JQuery-->
+ <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+
+ <style>
+     .main-slider {
+         max-height: 92vh;
+     }
+
+     .min-h-100vh {
+         max-height: 92vh !important;
+     }
+
+     /* .hero-banner {
+         padding-top: 4.5%;
+     } */
+
+     .logo-container {
+         background: #fff !important;
+     }
+
+     @media screen and (max-width: 576px) {
+         .hero-banner {
+             padding-top: 0;
+         }
+     }
+ </style>
+  <constants data-common-api="https://www.apiwebser.smcimprojects.com/api/" data-api="https://apis.syromalabarchurch.in/api/" data-base="http://www.syromalabarchurch.in/"></constants>
+
+  
+ <!--Common JS-->
+ <script src="assets/scripts/common.js"></script>
+
+
+</head>
+
+<body language="en">
+
+
+  <!-- preloader -->
+  <div id="loading">
+    <img src="assets/images/icons/loader.gif" style="width: 150px;">
+</div>
+
+
+  <!-- navbar -->
+  <header>
+
+
+    <!--header with logo & Language switch Start-->
+    <div id="navbar" class="logo-container d-flex align-items-center bg-transparent justify-content-between">
+        <!-- <div id="navbar" class="logo-container d-flex align-items-center bg-transparent position-absolute justify-content-between"> -->
+
+        <!--Logo Box Start-->
+        <a href="index.html" class="unset-link">
+            <div class="logo-box d-flex align-items-center bg-transparent pe-3">
+                <div class="logo-box-img bg-transparent">
+                    <div class="logo-img-div">
+                        <!-- http://www.syromalabarchurch.in/ -->
+                        <img class="lozad" data-src="http://www.syromalabarchurch.in/assets/images/resources/mount_logo.svg" width="60px" alt="Syro-Malabar Church">
+                    </div>
+                </div>
+                <div class="logo-box-text">
+                    <h1 class="ms-4"><span data-ml="സിറോ മലബാർ" data-en="SYRO MALABAR">SYRO-MALABAR</span><br><span data-ml="കത്തോലിക്ക സഭ" data-en="CATHOLIC CHURCH">CHURCH</span></h1>
+                </div>
+            </div>
+        </a>
+        <!--Logo Box End-->
+
+        <!--Menu Start-->
+        <div class="main-menu d-flex align-items-center justify-content-between">
+            <div class="left-top-menu d-none d-lg-block">
+                <nav class="navbar navbar-expand-lg bg-transparent">
+                    <div class="container-fluid">
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul> <li><a class="dropdown-item" href="index.html"><i class="fa-solid fa-house"></i></a></li></ul>&nbsp;&nbsp;
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="topmenus"></ul>
+                           
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="right-top-menu d-flex">
+                <ul>
+                    <!-- <li>
+                        <i class="fa-solid fa-magnifying-glass" id="search-btn" type="button" data-bs-toggle="modal" data-bs-target="#search-item"></i>
+
+                    </li> -->
+                    <!-- <li>
+                        <select class="form-select border-0 no-focusborder bg-color-transparent" id="change-language" aria-label="Default select example">
+                            <option selected="selected" value="en" class="bg-light hover-light">🇬🇧&nbsp;En</option>
+                            <option value="ml" class="bg-light">🇮🇳&nbsp;മ</option>
+                        </select>
+                    </li> -->
+                    <li>
+                        <i class="fas fa-bars" type="button" data-bs-toggle="offcanvas" data-bs-target="#detailedmenu" aria-controls="detailedmenu"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Menu End-->
+
+    </div>
+    <!--header with logo & Language switch End-->
+</header>
+
+
+
+
+
+<!--Detailed Menu Start-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="detailedmenu" aria-labelledby="detailedmenuLabel">
+    <div class="offcanvas-header pe-5 ps-5">
+        <h5 class="offcanvas-title" id="detailedmenuLabel">Detailed Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+        <div class="container mt-5 menu-overlay">
+            <div class="row" id="sidemenus"></div>
+        </div>
+
+    </div>
+</div>
+<!--Detailed Menu Stop-->
+
+
+
+
+
+<!--Search Start-->
+<div class="modal fade" id="search-item" tabindex="-1" aria-labelledby="search-itemLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header d-none">
+                <h5 class="modal-title" id="search-itemLabel">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="search-container">
+                    <div class="search-filter">
+                        <p class="filter-heading m-0">Search within</p>
+                        <ul class="d-flex p-0 ">
+                            <li class="d-flex position-relative me-3">
+                                <input type="radio" name="search-filter-radio" value="eparchy" id="eparchy">
+                                <label for="eparchy">
+                                    <span>Eparchy</span>
+                                </label>
+                            </li>
+                            <li class="d-flex position-relative me-3">
+                                <input type="radio" name="search-filter-radio" value="bishop" id="bishop">
+                                <label for="bishop">
+                                    <span>Bishops</span>
+                                </label>
+                            </li>
+                            <li class="d-flex position-relative me-3">
+                                <input type="radio" name="search-filter-radio" value="commision" id="commision">
+                                <label for="commision">
+                                    <span>Commissions</span>
+                                </label>
+                            </li>
+                            <li class="d-flex position-relative me-3">
+                                <input type="radio" name="search-filter-radio" value="circular" id="circular">
+                                <label for="circular">
+                                    <span>Circular</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="https://www.syromalabarchurch.in/search" method="GET">
+
+                        <div class="input-group flex-nowrap search-group">
+                            <span class="input-group-text" id="search-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="search" id="search-input" name="query" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-wrapping">
+                        </div>
+                    </form>
+
+                    <div class="search-dropdown">
+                        <div class="search-startscreen">
+                            <p class="search-help">No recent searches</p>
+                        </div>
+                        <div class="search-dropdown-container">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer flex-row-reverse justify-content-between">
+                <div class="search-logo d-flex align-items-center">
+                    <span class="search-logo-label me-1">Search by</span>
+                    <a href="press-release.html#!">
+                        <svg height="15" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 974.27 199.65">
+                            <title>SMCIM</title>
+                            <path d="M645.39,633.34H467.77V433.7H645.39ZM612.83,563.2q0-20.34-11-30.88Q593,524.19,570.7,518l-18.91-5.26q-18.91-5.27-18.91-17,0-20.34,23.46-20.35,13.39,0,17.71,6.7,2.88,4.56,3.83,18.2H608q0-25.62-10.53-37.35-11.73-13.15-40-13.16-27,0-41,12.92t-14,36.39a36.06,36.06,0,0,0,9.93,25.49q9.93,10.66,25.74,14.49l22.5,5.5q9.81,2.4,15.56,8.74A21,21,0,0,1,582,567.75q0,10.77-3.83,15.08-5,5.5-18.43,5.51-15.57,0-21.78-6.7-5-5.26-6.95-18.68H499.84q5.27,51.48,57,51.47,30.15,0,43.56-13.41,12.45-12.21,12.45-37.82" transform="translate(-467.77 -433.7)" style="fill:#276cb4" />
+                            <path d="M844.55,633.34H666.93V433.7H844.55Zm-29.68-23.93v-157H770.34L756.7,520.84l-13.65-68.47H698.52v157h30.65V482.53l13.88,68.23h27.29l13.88-68.95v127.6Z" transform="translate(-467.77 -433.7)" style="fill:#276cb4" />
+                            <path d="M1043.71,633.34H866.09V433.7h177.62Zm-30.4-77.56H982.19c-.47,10.38-2.24,17.88-5.26,22.51q-5.52,8.37-18.68,8.38-17,0-23.21-14.85-4.8-11.49-4.79-40,0-28.72,5-40.22,6.16-14.85,23.72-14.84,12.56,0,17.79,8.14,3.78,6,5.45,20.58h31.12q-1.2-55.77-54.82-55.77-33,0-47.63,23.7-12,19.62-12,57.45,0,40.7,12.44,60.8,13.65,22.5,44,22.5,27.52,0,41.06-13.76t16.87-44.65" transform="translate(-467.77 -433.7)" style="fill:#276cb4" />
+                            <path d="M1242.88,633.34H1065.26V433.7h177.62Zm-43.81-23.93V582.59h-28V479.18h28V452.37h-88.33v26.81h28V582.59h-28v26.82Z" transform="translate(-467.77 -433.7)" style="fill:#276cb4" />
+                            <path d="M1442,633.34H1264.42V433.7H1442Zm-29.68-23.93v-157h-44.53l-13.65,68.47-13.64-68.47H1296v157h30.64V482.53l13.88,68.23h27.29l13.89-68.95v127.6Z" transform="translate(-467.77 -433.7)" style="fill:#276cb4" />
+                        </svg>
+                    </a>
+                </div>
+                <ul class="d-flex p-0 d-none d-lg-block">
+                    <li class="d-flex">
+                        <div class="search-commands">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2">
+                                    <path d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="search-command-label">to close</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Search End-->
+  <!-- navbar -->
+  
+
+
+  <!-- breadcrumb -->
+  
+<section class="breadcrumb-container">
+    <div class="container">
+        <h2 class="breadcrumb-title" style=" text-transform: uppercase;"></h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0" id="breadcrumbs"></ol>
+        </nav>
+        <div class="breadcrumb-img d-none d-md-block">
+            <img data-src="http://www.syromalabarchurch.in/assets/images/background/shepared.png" class="lozad" alt="">
+        </div>
+    </div>
+</section>
+
+
+
+
+  <!-- content -->
+  <div id="mainContent">
+    <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .nav-pills .nav-link.active,
+        .nav-pills .show > .nav-link {
+            color: var(--bs-nav-pills-link-active-color);
+            background-color: #0b2848;
+        }
+    </style>
+</head>
+<body>
+<section class="ordinary-tribunal-container inner-page-content">
+
+<div class="container">
+    <!--Search Start-->
+   
+
+    <div class="card" style="5px solid #ecd6d6;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+        <ul class="nav nav-pills mb-3 sm-documents"  role="tablist" style="background-color:#d74754;color:#fff;font-size:18px;">
+       
+    <li class="nav-item" role="presentation">
+    <b>
+        <a href="chancery-documents.html" style="text-decoration: none;">
+            <button style="color:#fff; font-size:19px;" class="category-list nav-link " data-id="circulars" type="button">Chancery</button>
+        </a>
+    </b>
+</li>
+
+<li class="nav-item" role="presentation">
+            <b>
+            <button style="color:#fff;font-size:19px;" class="category-list nav-link active" data-id="circulars" type="button">Media Commission</button>
+        </b>
+    </li>
+
+    </ul>
+
+
+        <div class="tab-content">
+                    <div class="documentsContainer">
+                    <ol class="list-group list-group-numbered list-group-flush" id="church"></ol>
+
+                        <!-- <div class="row"  id="church"></div> -->
+
+                        <!-- Load More -->
+                      
+                        <!-- <div class="text-center LoadMore mt-3">
+                            <p class="mb-1">Showing <span class="fw-bold displayed_items">00</span> of <span class="fw-bold total_items">000</span> items</p>
+                            <button type="button" class="btn btn-outline-danger load-more" style="margin-bottom:20px;">LOAD MORE</button>
+                        </div> -->
+                        <div class="text-center LoadMore mt-3">
+                            <p class="mb-1">Showing <span class="fw-bold total_items">00</span> of <span class="fw-bold displayed_items">000</span> items</p>
+                            <button type="button" class="btn btn-outline-danger load-more" style="margin-bottom:20px;">LOAD MORE</button>
+                        </div>
+                        
+                    </div>
+                </div>
+    </div>
+</div>
+</section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+// const apiEndpoint = "https://apis.syromalabarchurch.in/api/pr_document";
+//const apiEndpoint = "https://www.apis.syromalabarchurch.in/api/pr_document";
+let currentPage = 1;
+        let perPage = 10;
+
+
+        $(document).ready(function() {
+        fetchChurchesList();
+    });
+
+    $(document).on('click', '.load-more', function(e) {
+            e.preventDefault();
+           fetchChurchesList();
+        });
+
+        function resetValues() {
+            const documents = $("#church");
+            const displayed_items = $(".displayed_items");
+            const total_items = $(".total_items");
+
+            currentPage = 1;
+            perPage = 8;
+
+            documents.html('');
+            displayed_items.text('00');
+            total_items.text('000');
+        }
+
+    
+    
+
+
+    function fetchChurchesList() {
+        const churchsDiv = $("#church");
+        const displayed_items = $(".displayed_items");
+            const total_items = $(".total_items");
+        churchsDiv.html(loaderHtml);
+
+        let parameters = {
+               // "category": category_alias,
+                "page": currentPage,
+                "per_page": perPage
+            };
+
+            fetchData(apiEndpoints.pr_document, function(response) {
+                addLanguageChangeMethod(fetchChurchesList);
+             churchsDiv.html('');
+
+                if (!response.status) {
+                    if (currentPage == 1)
+                        resetValues();
+                    return;
+                }
+
+                currentPage++;
+
+                displayed_items.text(response.meta.displayed_items);
+                total_items.text(response.meta.total_items);
+
+                var churchsHtml = "";
+
+                const mainDetails = response.data.contents;
+            var churchsHtml = "";
+            var metaDetails, contentDetails;
+
+                $.each(mainDetails, function(idx, document) {
+                    //if (document.category_name == 'press release') {
+                        churchsHtml += `<div class="list-group-item d-flex justify-content-between align-items-center" style="background-color:#eaeaea;">`;
+                        churchsHtml += `<div class="ms-2 me-auto"><div class="fw-bold">${document.pr_name} <span class="fw-light DocumentDate"></span></div>`;
+                        churchsHtml += `<p class="m-0"><span class="fileType">PDF</span><span class="fileSize ms-2">${document.pr_size}</span></p></div>`;
+                        churchsHtml += `<a href="https://www.syromalabarchurch.in/${document.pr_path}" type="button" target="blank"  style="color:#fff;background-color: #0b2848;border:5px solid  #0b2848;" class="btn btn-outline-success" download><i class="fa-solid fa-download"></i></a></div>`;
+                   // } 
+                    
+                });
+                churchsHtml += `</div></div>`;
+            churchsDiv.append(churchsHtml);
+
+            loadLazyImages();
+
+        }, parameters);
+    }
+</script>
+</div>  <!-- mainContent -->
+
+
+
+
+
+
+  <!-- footer -->
+  <!--Footer Start-->
+<footer>
+    <div class="footer-container">
+        <div class="row">
+            <div class="col-lg-4 footer-section-1">
+
+                <span class="contact-title">
+                    CONTACT US
+                </span>
+
+                <form action="https://www.syromalabarchurch.in/save_contact_us" class="" id="contact-form" autocomplete="off" method="post" accept-charset="utf-8">
+                                                    <input type="hidden" name="_token" value="e9515a944eb16aab9231ea6154fd9ee3" />
+
+                <div class="contact-us">
+                    <div class="form-floating mb-2 subscribe-email-container">
+                        <input data-validation="required" type="text" class="form-control subscribe-email" name="full_name" id="contact-name" placeholder="Enter Your Name">
+                        <label for="contact-name">Name</label>
+                    </div>
+                    <div class="form-floating mb-2 subscribe-email-container">
+                        <input data-validation="required|valid_email" type="email" class="form-control subscribe-email" name="email_address" id="contact-email" placeholder="name@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <label for="contact-email">Email</label>
+                    </div>
+                    <div class="form-floating mb-2 subscribe-email-container">
+                        <input data-validation="numeric" type="tel" class="form-control subscribe-email" name="phone_number" id="contact-phone" placeholder="name@example.com">
+                        <label for="contact-phone">Phone</label>
+                    </div>
+                    <div class="form-floating mb-4 subscribe-email-container">
+                        <textarea data-validation="required" class="form-control subscribe-email" cols="3" name="feedback" placeholder="Message" id="contact-message"></textarea>
+                        <label for="contact-message">Message</label>
+                    </div>
+
+
+                    <div class="progress mb-3 progress-lg" style="display: none;">
+                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="primary-button submit-btn">
+                        <span>Submit</span>
+                        <i class="fa-solid fa-arrow-right-long ms-3"></i>
+                    </button>
+                </div>
+
+                </form>
+
+
+                <div class="m-auto d-flex d-none">
+                    <span>
+                        Contact<br>Us.
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center mt-20p d-none">
+                    <div class="form-floating mb-3 subscribe-email-container">
+                        <input type="email" class="form-control subscribe-email" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Enter Your Email</label>
+                    </div>
+                </div>
+                <img data-src="http://www.syromalabarchurch.in/assets/images/background/sleeva.webp" class="sleeva lozad d-none" alt="">
+
+            </div>
+            <div class="col-lg-5 footer-section-2 ps-5">
+                <div class="row">
+
+
+                    <div class="col-lg-4">
+                        <div class="footer-widget">
+                            <h4 class="mb-4">
+                                Quick Links
+                            </h4>
+                            <div id="quicklinks" ></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="footer-widget">
+                            <h4 class="mb-4">
+                                Upcoming Events
+                            </h4>
+                            <div id="latest_events"></div>
+                        </div>
+
+
+                        <div class="social-media">
+                            <h6 class="mb-2">Social With Us</h6>
+                            <ul id="socialmedias"></ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 footer-section-2 pe-5">
+                <div class="footer-widget">
+                    <h4 class="mb-4">
+                        Explore
+                    </h4>
+                    <div id="quicklinks">
+                 
+                   
+                    <a href="circulars.html" target="_blank"><p class="mb-3">Circulars</p></a>
+                   
+                    <a href="media.html" target="_blank"><p class="mb-3">The Light</p></a>
+                    <a href="chancery-documents.html" target="_blank"><p class="mb-3">Press Release</p></a>
+                 
+
+
+                    <!-- <div id="latest_news"></div> -->
+
+                   <a href="https://smcimphotos.smugmug.com/"> <h4 class="mb-4">
+                        Gallery
+                    </h4></a>
+                    <div class="gallery-wrapper" id="latest_gallery">
+                        <div class="box-1">
+                            <a href="assets/images/gallery/g2.webp.html" class="glightbox">
+                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g2.webp" class="w-100 lozad" alt="">
+                            </a>
+                        </div>
+                        <div class="box-2">
+                            <a href="assets/images/gallery/g1.webp.html" class="glightbox">
+                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g1.webp" class="w-100 lozad" alt="">
+                            </a>
+                        </div>
+                        <div class="box-3">
+                            <a href="assets/images/gallery/g3.webp.html" class="glightbox">
+                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g3.webp" class="w-100 lozad" alt="">
+                            </a>
+                        </div>
+                        <div class="box-4">
+                            <a href="assets/images/gallery/g4.webp.html" class="glightbox">
+                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g4.webp" class="w-100 lozad" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer-bottom-row">
+            <div class="col-lg-4 footer-section-11 d-none d-lg-block">
+                <ul>
+                    <li class="float-end"><a href="press-release.html"> Terms & Conditions</a></li>
+                    <li class="float-end"><a href="press-release.html"> Disclaimers</a></li>
+                    <li class="float-end copy-right"><a href="index.html"> © 2023 Syro-Malabar Church</a></li>
+                </ul>
+                <!-- http://www.syromalabarchurch.in/terms-and-conditions and http://www.syromalabarchurch.in/disclaimers -->
+            </div>
+            <div class="col-lg-8 footer-section-2 made-by pe-5 ">
+                <ul class="d-none d-lg-block">
+                    <li class="float-end">
+                        <p class="text-white">Made with <i class="fa-solid fa-heart text-danger"></i> by <a href="press-release.html#!"><img class="lozad" width="60" data-src="http://www.syromalabarchurch.in/assets/images/resources/smcim_footer.svg" alt="SMCIM"></a>
+                        </p>
+                    </li>
+                </ul>
+                <div class="footer-bottom">
+                    <p class="d-block d-lg-none  w-100"><a href="press-release.html#!" class="text-start"> Terms & Conditions</a> <a href="press-release.html#!" class="float-end"> Disclaimers</a></p>
+                    <p class="text-white text-center mb-2 d-block d-lg-none">Made with <i class="fa-solid fa-heart text-danger"></i>
+                        by <a href="press-release.html#!"><img class="lozad" width="60" data-src="http://www.syromalabarchurch.in/assets/images/resources/smcim_footer.svg" alt="SMCIM"></a>
+                    </p>
+                    <p class="text-white text-center mb-2 d-block d-lg-none">© 2023 Syro Malabar Church</p>
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+
+  <!-- js -->
+  <!--Bootstrap-->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<!--Lazy Load-->
+<script src="assets/js/lozad.min.js"></script>
+<!--WOW Js-->
+<script src="assets/js/wow.min.js"></script>
+<!--Swiper Slider-->
+<script src="assets/js/swiper-bundle.min.js"></script>
+<!--Tiny Slider-->
+<script src="assets/js/tiny-slider.js"></script>
+<!--Glightbox-->
+<script src="assets/js/glightbox.min.js"></script>
+<!--Custom JS-->
+<script src="assets/js/script.js"></script>
+<script src="assets/scripts/validation.js"></script>
+
+
+</body>
+
+</html>
