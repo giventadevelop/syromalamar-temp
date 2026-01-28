@@ -110,7 +110,7 @@
             <div class="logo-box d-flex align-items-center bg-transparent pe-3">
                 <div class="logo-box-img bg-transparent">
                     <div class="logo-img-div">
-                        <img class="lozad" data-src="assets/images/mosc_images/MOSC-logo-Brand-part.png" src="assets/images/mosc_images/MOSC-logo-Brand-part.png" style="max-width: 60px; height: auto; object-fit: contain;" alt="Syro-Malabar Church">
+                        <img class="lozad" data-src="assets/images/mosc_images/MOSC-logo-Brand-part.png" src="assets/images/mosc_images/MOSC-logo-Brand-part.png" style="width:110px" alt="Syro-Malabar Church">
                     </div>
                 </div>
             </div>
@@ -390,6 +390,31 @@
 
     #skin-select {
         top: 68vh;
+        display: none !important;
+    }
+
+    #saints-customize-controls {
+        display: none !important;
+    }
+
+    /* Keep liturgy (section[7]) and locations (section[8]) stacked, no overlap */
+    #mainContent section.liturgy {
+        overflow: visible;
+        padding-bottom: 60px;
+        margin-bottom: 0;
+        display: block;
+    }
+    #mainContent section.liturgy .liturgy-image,
+    #mainContent section.liturgy .liturgy-image img {
+        position: relative !important;
+        left: 0 !important;
+        display: block;
+    }
+    #mainContent section.syromalabar-locations {
+        clear: both;
+        margin-top: 0;
+        padding-top: 60px;
+        display: block;
     }
 
     /* @media only screen and (max-width: 767px) {
@@ -415,6 +440,33 @@
 
     #fas-toggle {
         margin-top: 3px;
+    }
+
+    /* Quick links: 2 columns, aligned */
+    #quicklinks.quick-links-two-col {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    #quicklinks.quick-links-two-col .col-md-6 {
+        display: flex;
+    }
+    .quick-links-list {
+        width: 100%;
+    }
+    .quick-links-list li {
+        padding: 0.35rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .quick-links-list li:last-child {
+        border-bottom: none;
+    }
+    .quick-links-list li a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .quick-links-list li a:hover {
+        text-decoration: underline;
     }
 
 </style>
@@ -592,12 +644,10 @@
     </div>
   
 </div>
-<!--Quick Liks Start-->
-
-<section class="quicklink">
+<!-- Banner shortcuts (Catholicate News, Downloads, E-mail, Gallery, Contact) - distinct from footer Quick Links -->
+<section class="quicklink" id="banner-shortcuts-section">
     <div class="container">
-        <div class="row">
-
+        <div id="banner-shortcuts" class="row">
             <div class="col">
                 <a href="#" class="quick-link-card odd d-flex align-items-center be-1 mb-sm-30">
                     <div class="quick-icon">
@@ -609,7 +659,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="#" class="quick-link-card even d-flex align-items-center be-1 mb-sm-30">
+                <a href="downloads.html" class="quick-link-card even d-flex align-items-center be-1 mb-sm-30">
                     <div class="quick-icon">
                         <img src="assets/images/icons/CIRCULAR-icon.svg" height="40" class="me-3 lozad" alt="Downloads icon">
                     </div>
@@ -619,7 +669,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="#" class="quick-link-card odd d-flex align-items-center be-1 mb-sm-30">
+                <a href="contact-form-email.html" class="quick-link-card odd d-flex align-items-center be-1 mb-sm-30">
                     <div class="quick-icon">
                         <img src="assets/images/icons/PRESS-icon.svg" height="40" class="me-3 lozad" alt="E-Mail icon">
                     </div>
@@ -629,7 +679,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="https://smcimphotos.smugmug.com/" target="_blank" class="quick-link-card even d-flex align-items-center be-1">
+                <a href="#" class="quick-link-card even d-flex align-items-center be-1 mb-sm-30">
                     <div class="quick-icon">
                         <img src="assets/images/icons/GALLERY-icon.svg" width="40" class="me-3 lozad" alt="Gallery icon">
                     </div>
@@ -639,7 +689,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="#" class="quick-link-card odd d-flex align-items-center be-1">
+                <a href="contact-info.html" class="quick-link-card odd d-flex align-items-center be-1">
                     <div class="quick-icon">
                         <img src="assets/images/icons/cal.png" height="40" class="me-3 lozad" alt="Contact Info icon">
                     </div>
@@ -648,11 +698,10 @@
                     </div>
                 </a>
             </div>
-
         </div>
     </div>
 </section>
-<!--Quick Liks End-->
+<!-- Banner shortcuts End -->
 
 <!-- Notification -->
 <section class="Circularnotification">
@@ -724,8 +773,12 @@
                             <h6>Our Saints & Blesseds</h6>
                             <!-- </a> -->
                         </div>
-                        <div class="our-saints-slider-container"><a href="saints.html">
-                            <ul class="our-saints-slider" id="saints"></ul></a>
+                        <div class="our-saints-slider-container">
+                            <ul class="controls" id="saints-customize-controls" aria-label="Saints carousel navigation" tabindex="0">
+                                <li class="prev" data-controls="prev" aria-controls="saints" tabindex="-1"><i class="fas fa-angle-left"></i></li>
+                                <li class="next" data-controls="next" aria-controls="saints" tabindex="-1"><i class="fas fa-angle-right"></i></li>
+                            </ul>
+                            <ul class="our-saints-slider" id="saints"></ul>
                         </div>
                     </div>
                     <!--Our Saints End-->
@@ -787,10 +840,10 @@
 
 
                         <div class="event-title p-2 mb-4">
-                            <span id="bishop_name"></span>
+                            <span id="bishop_name">His Holiness Baselios Marthoma Mathews III</span>
                         </div>
 
-                        <p class="mb-0" id="bishop_about"></p>
+                        <p class="mb-0" id="bishop_about">His Holiness Baselios Marthoma Mathews III was enthroned as the Catholicos of the East &amp; Malankara Metropolitan (the Supreme Head of the Malankara Orthodox Syrian Church of India) on Friday, 15th October 2021. His Holiness is the 92nd Primate on the Apostolic Throne of St. Thomas.</p>
 
                         <a href="major-archbishop.html" class="primary-button cardinal-new-profile">
                             <span>View Profile</span>
@@ -866,46 +919,9 @@
                     <span class="imp-color">Liturgical</span> <span>Calendar</span>
                 </h2>
             </div>
-            <div class="liturgy-details">
-                <div class="liturgy-date">
-                    <span><i class="fa-solid fa-calendar-day me-3"></i></span><span>20 Jan 2026</span>
-                </div>
-                <div class="liturgy-data">
-                    <div class="row">
-
-                        <div class="col-lg-3">
-                            <div class="liturgy-image position-relative">
-                                <img data-src="http://www.syromalabarchurch.in/assets/images/resources/liturgy.jpg" class="lozad" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9 ">
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-end">
-                                    <ul class="nav nav-pills">
-                                        <li class="liturgy-nav-item nav-item">
-                                            <button class="liturgy-button nav-link active" data-id="en" type="button">English</button>
-                                        </li>
-                                        <li class="liturgy-nav-item nav-item" role="presentation">
-                                            <button class="liturgy-button nav-link" data-id="mal" type="button">Malayalam</button>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="liturgy-readings">
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="liturgy_readings"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="liturgy-image position-relative mt-4">
+            <img src="assets/images/mosc_images/Liturgy Calendar.png" class="lozad w-100" alt="Liturgical Calendar" style="object-fit: contain; max-width: 100%; display: block;">
         </div>
     </div>
 </section>
@@ -1061,42 +1077,6 @@
     </div>
 </section> -->
 <!--Latest News End-->
-
-
-<!--Daily Saints & SMCIM Start-->
-<section class="daily-saints">
-    <div class="container">
-        <div class="section-title">
-            <h6>What is Today?</h6>
-        </div>
-        <div class="daily-saints-container">
-            <div class="main-title">
-                <h2>
-                    <!-- <span>Daily</span> -->
-                    <span class="imp-color">Updates</span>
-                </h2>
-            </div>
-
-            <!-- Latest News Slider Start -->
-            <div class="daily-saints-slider-container">
-                <ul class="controls" id="customize-controls" aria-label="Carousel Navigation" tabindex="0">
-                    <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">
-                        <i class="fas fa-angle-left"></i>
-                    </li>
-                    <li class="next" data-controls="next" aria-controls="customize" tabindex="-1">
-                        <i class="fas fa-angle-right"></i>
-                    </li>
-                </ul>
-                <ul class="daily-saints-slider" id="daily_updates"></ul>
-            </div>
-            <!-- Latest News Slider End -->
-
-        </div>
-    </div>
-</section>
-<!--Daily Saints & SMCIM End-->
-
-
 
 
 <!--World Wide Locations Start-->
@@ -1406,7 +1386,18 @@
                             <h4 class="mb-4">
                                 Quick Links
                             </h4>
-                            <div id="quicklinks" ></div>
+                            <div id="footer-quicklinks">
+                                <a href="#" target="_blank"><p class="mb-3">Spiritual Organisations</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Publications</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Institutions</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Directory</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Training</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Theological Seminaries</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Lectionary</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Downloads</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Calendar</p></a>
+                                <a href="#" target="_blank"><p class="mb-3">Gallery</p></a>
+                            </div>
                         </div>
                     </div>
 
@@ -1432,46 +1423,11 @@
 
             <div class="col-lg-3 footer-section-2 pe-5">
                 <div class="footer-widget">
-                    <h4 class="mb-4">
-                        Explore
-                    </h4>
-                    <div id="quicklinks">
-                 
-                   
-                    <a href="circulars.html" target="_blank"><p class="mb-3">Circulars</p></a>
-                   
-                    <a href="media.html" target="_blank"><p class="mb-3">The Light</p></a>
-                    <a href="chancery-documents.html" target="_blank"><p class="mb-3">Press Release</p></a>
-                 
-
-
-                    <!-- <div id="latest_news"></div> -->
-
-                   <a href="https://smcimphotos.smugmug.com/"> <h4 class="mb-4">
-                        Gallery
-                    </h4></a>
-                    <div class="gallery-wrapper" id="latest_gallery">
-                        <div class="box-1">
-                            <a href="assets/images/gallery/g2.webp.html" class="glightbox">
-                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g2.webp" class="w-100 lozad" alt="">
-                            </a>
-                        </div>
-                        <div class="box-2">
-                            <a href="assets/images/gallery/g1.webp.html" class="glightbox">
-                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g1.webp" class="w-100 lozad" alt="">
-                            </a>
-                        </div>
-                        <div class="box-3">
-                            <a href="assets/images/gallery/g3.webp.html" class="glightbox">
-                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g3.webp" class="w-100 lozad" alt="">
-                            </a>
-                        </div>
-                        <div class="box-4">
-                            <a href="assets/images/gallery/g4.webp.html" class="glightbox">
-                                <img data-src="http://www.syromalabarchurch.in/assets/images/gallery/g4.webp" class="w-100 lozad" alt="">
-                            </a>
-                        </div>
-                    </div>
+                    <h4 class="mb-4">Contact Information</h4>
+                    <p class="mb-1">Headquarters:</p>
+                    <p class="mb-1">Catholicate Palace<br>Devalokam, Kottayam<br>Kerala, India</p>
+                    <p class="mb-1">Phone: +91-481-2300-700</p>
+                    <p class="mb-0">Email: info@mosc.in</p>
                 </div>
             </div>
         </div>
@@ -1480,7 +1436,7 @@
                 <ul>
                     <li class="float-end"><a href="index.html"> Terms & Conditions</a></li>
                     <li class="float-end"><a href="index.html"> Disclaimers</a></li>
-                    <li class="float-end copy-right"><a href="index.html"> © 2023 Syro-Malabar Church</a></li>
+                    <li class="float-end copy-right"><a href="index.html"> © 2026 The Malankara Orthodox Church. All rights reserved.</a></li>
                 </ul>
                 <!-- http://www.syromalabarchurch.in/terms-and-conditions and http://www.syromalabarchurch.in/disclaimers -->
             </div>
@@ -1496,7 +1452,7 @@
                     <p class="text-white text-center mb-2 d-block d-lg-none">Made with <i class="fa-solid fa-heart text-danger"></i>
                         by <a href="index.html#!"><img class="lozad" width="60" data-src="http://www.syromalabarchurch.in/assets/images/resources/smcim_footer.svg" alt="SMCIM"></a>
                     </p>
-                    <p class="text-white text-center mb-2 d-block d-lg-none">© 2023 Syro Malabar Church</p>
+                    <p class="text-white text-center mb-2 d-block d-lg-none">© 2026 The Malankara Orthodox Church. All rights reserved.</p>
                 </div>
                 </ul>
             </div>

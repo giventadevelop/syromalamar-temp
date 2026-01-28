@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Contact Form (Email) - Malankara Orthodox Syrian Church</title>
+
+  <!-- meta -->
+  <meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=.9">
+
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="theme-color" content="#ffffff">
+
+  <!-- css -->
+ <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+ <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+ <link rel="mask-icon" href="assets/images/favicon/safari-pinned-tab.svg" color="#2b5797">
+
+ <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+ <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+ <link rel="stylesheet" href="assets/css/tiny-slider.css">
+ <link rel="stylesheet" href="assets/css/animate.min.css">
+ <link rel="stylesheet" href="assets/css/glightbox.min.css">
+ <link rel="stylesheet" href="assets/css/plyr.min.css">
+ <link rel="stylesheet" href="assets/css/style.css">
+ <link rel="stylesheet" href="assets/css/style-inner.css">
+
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css">
+ <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+ <style>
+     .main-slider { max-height: 92vh; }
+     .min-h-100vh { max-height: 92vh !important; }
+     .logo-container { background: #fff !important; }
+     @media screen and (max-width: 576px) { .hero-banner { padding-top: 0; } }
+     /* Design system: syromalabar_site_general_design_final.json */
+     .contact-form-page {
+         padding: 60px 0;
+         background-color: #f5f6f7;
+         font-family: 'Poppins', Arial, Helvetica, sans-serif;
+         color: #0b2848;
+     }
+     .contact-form-page .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 15px;
+     }
+     .contact-form-page .data-section {
+         position: relative;
+         padding-left: 80px;
+     }
+     @media (max-width: 991px) {
+         .contact-form-page .data-section { padding-left: 15px; }
+     }
+     .contact-form-page .main-title {
+         margin-bottom: 40px;
+     }
+     .contact-form-page .main-title h1 {
+         font-size: 2.8rem;
+         font-weight: 700;
+         color: #0b2848;
+         margin-bottom: 10px;
+     }
+     @media (max-width: 991px) {
+         .contact-form-page .main-title h1 { font-size: calc(1.5rem + 1vw); }
+     }
+     .contact-form-page .main-title p {
+         font-size: 20px;
+         font-weight: 400;
+         color: #506276;
+         margin-bottom: 40px;
+     }
+     .contact-form-page .contact-form-card {
+         background: #ffffff;
+         padding: 40px;
+         border-radius: 5px;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+         transition: 0.5s;
+         position: relative;
+         max-width: 700px;
+         margin: 0 auto 60px;
+     }
+     .contact-form-page .contact-form-card:hover {
+         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     }
+     .contact-form-page .contact-form-card h2 {
+         font-size: 2.2rem;
+         font-weight: 700;
+         color: #0b2848;
+         margin-bottom: 10px;
+     }
+     .contact-form-page .contact-form-card h3 {
+         font-size: 1.8rem;
+         font-weight: 600;
+         color: #0b2848;
+         margin-bottom: 20px;
+     }
+     .contact-form-page .contact-form-card .form-label,
+     .contact-form-page .contact-form-card label {
+         font-size: 16px;
+         font-weight: 300;
+         color: #7b869a;
+     }
+     .contact-form-page .contact-form-card .form-control {
+         color: #0b2848;
+         border: 1px solid #eaebef;
+         padding: 15px;
+     }
+     .contact-form-page .contact-form-card .form-control:focus {
+         border-color: #dc3545;
+         box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+         outline: 0;
+     }
+     .contact-form-page .contact-form-card .form-control::placeholder {
+         color: #818181;
+     }
+     .contact-form-page .btn-submit,
+     .contact-form-page .primary-button {
+         text-decoration: none;
+         color: #fff;
+         background: #dc3545;
+         padding: 10px 20px;
+         border: none;
+         border-right: 7px solid #be1929;
+         font-weight: 300;
+         display: inline-block;
+         transition: 1s;
+         cursor: pointer;
+         font-family: 'Poppins', Arial, Helvetica, sans-serif;
+         font-size: 16px;
+     }
+     .contact-form-page .btn-submit:hover,
+     .contact-form-page .primary-button:hover {
+         background: #be1929;
+         border-right-color: #dc3545;
+         color: #fff;
+     }
+     .contact-form-page .breadcrumb-wrap .breadcrumb-container {
+         background-color: #f5f6f7;
+     }
+     .contact-form-page .breadcrumb-wrap .breadcrumb-title {
+         font-size: 2.2rem;
+         font-weight: 700;
+         color: #0b2848;
+         text-transform: uppercase;
+     }
+     .contact-form-page .breadcrumb-wrap .breadcrumb-item a {
+         color: #0b2848;
+         transition: color 0.3s;
+     }
+     .contact-form-page .breadcrumb-wrap .breadcrumb-item a:hover {
+         color: #dc3545;
+     }
+     .contact-form-page .breadcrumb-wrap .breadcrumb-item.active {
+         color: #506276;
+     }
+     .contact-form-page .content-body {
+         font-size: 20px;
+         color: #506276;
+         margin-bottom: 20px;
+     }
+     .contact-form-page .section-title-accent {
+         position: relative;
+         padding-left: 30px;
+     }
+     .contact-form-page .section-title-accent::before {
+         content: '';
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 7px;
+         height: 120%;
+         background-color: #dc3545;
+     }
+     /* Contact Us intro: centered icon, heading, paragraph */
+     .contact-us-intro {
+         margin-bottom: 40px;
+         padding: 20px 0;
+     }
+     .contact-us-intro-icon {
+         width: 72px;
+         height: 72px;
+         margin: 0 auto 24px;
+         background: linear-gradient(#011e94, #011e94d4);
+         border-radius: 12px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #fff;
+         font-size: 28px;
+     }
+     .contact-us-intro-title {
+         font-family: 'Playfair Display', serif;
+         font-size: 2.8rem;
+         font-weight: 700;
+         color: #0b2848;
+         margin-bottom: 10px;
+     }
+     .contact-us-intro-text {
+         font-size: 20px;
+         font-weight: 400;
+         color: #506276;
+         max-width: 640px;
+         margin: 0 auto;
+         line-height: 1.5;
+     }
+     /* Contact info cards: Email, Phone, Visit Us */
+     .contact-info-cards {
+         margin-top: 60px;
+     }
+     .contact-info-card {
+         background: #ffffff;
+         padding: 24px;
+         border-radius: 8px;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+         display: flex;
+         align-items: flex-start;
+         gap: 20px;
+         transition: 0.5s;
+         height: 100%;
+     }
+     .contact-info-card:hover {
+         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     }
+     .contact-info-card-icon {
+         width: 48px;
+         height: 48px;
+         min-width: 48px;
+         border-radius: 8px;
+         background: #eaebef;
+         color: #0b2848;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 20px;
+     }
+     .contact-info-card-label {
+         font-size: 1rem;
+         font-weight: 600;
+         color: #0b2848;
+         margin-bottom: 8px;
+     }
+     .contact-info-card-value {
+         font-size: 16px;
+         font-weight: 400;
+         color: #506276;
+         line-height: 1.5;
+     }
+     .contact-info-card-wide {
+         padding: 28px 24px;
+     }
+ </style>
+  <constants data-common-api="https://www.apiwebser.smcimprojects.com/api/" data-api="https://apis.syromalabarchurch.in/api/" data-base="http://www.syromalabarchurch.in/"></constants>
+ <script src="assets/scripts/common.js"></script>
+
+</head>
+
+<body language="en">
+
+  <div id="loading">
+    <img src="assets/images/icons/loader.gif" style="width: 150px;">
+</div>
+
+  <header>
+    <div id="navbar" class="logo-container d-flex align-items-center bg-transparent justify-content-between">
+        <a href="index.html" class="unset-link">
+            <div class="logo-box d-flex align-items-center bg-transparent pe-3">
+                <div class="logo-box-img bg-transparent">
+                    <div class="logo-img-div">
+                        <img class="lozad" data-src="assets/images/mosc_images/MOSC-logo-Brand-part.png" src="assets/images/mosc_images/MOSC-logo-Brand-part.png" style="width:110px" alt="Malankara Orthodox Syrian Church">
+                    </div>
+                </div>
+            </div>
+        </a>
+        <div class="main-menu d-flex align-items-center justify-content-between">
+            <div class="left-top-menu d-none d-lg-block">
+                <nav class="navbar navbar-expand-lg bg-transparent">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul> <li><a class="dropdown-item" href="index.html"><i class="fa-solid fa-house"></i></a></li></ul>&nbsp;&nbsp;
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="topmenus"></ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="right-top-menu d-flex">
+                <ul>
+                    <li>
+                        <i class="fas fa-bars" type="button" data-bs-toggle="offcanvas" data-bs-target="#detailedmenu" aria-controls="detailedmenu"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="detailedmenu" aria-labelledby="detailedmenuLabel">
+    <div class="offcanvas-header pe-5 ps-5">
+        <h5 class="offcanvas-title" id="detailedmenuLabel">Detailed Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container mt-5 menu-overlay">
+            <div class="row" id="sidemenus"></div>
+        </div>
+    </div>
+</div>
+
+  <!-- Breadcrumb: design system alignment (max-width 1200px, padding 0 15px, typography #0b2848) -->
+  <section class="breadcrumb-container breadcrumb-wrap contact-form-page">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+        <h2 class="breadcrumb-title">Contact Form (Email)</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0" id="breadcrumbs">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact Form (Email)</li>
+            </ol>
+        </nav>
+        <div class="breadcrumb-img d-none d-md-block">
+            <img data-src="http://www.syromalabarchurch.in/assets/images/background/shepared.png" class="lozad" alt="">
+        </div>
+    </div>
+  </section>
+
+  <!-- Main content: entire content from http://localhost:3000/mosc/contact-form-email (excl. header/footer), styled per design system -->
+  <div id="mainContent">
+    <section class="contact-form-page major-archbishop-container inner-page-content">
+        <div class="container">
+            <div class="data-section">
+                <!-- Contact Us intro: icon, heading, paragraph (centered) -->
+                <div class="contact-us-intro text-center">
+                    <div class="contact-us-intro-icon">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <h1 class="contact-us-intro-title">Contact Us</h1>
+                    <p class="contact-us-intro-text">We would love to hear from you. Please fill out the form below and we will get back to you as soon as possible.</p>
+                </div>
+
+                <!-- Form content -->
+                <div id="contact-form-email-content">
+                    <div class="contact-form-card">
+                        <form action="#" method="post" id="contact-email-form">
+                            <div class="mb-3">
+                                <label for="contact-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contact-name" name="full_name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contact-email" name="email_address" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="contact-subject" name="subject" placeholder="Subject of your message">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-message" class="form-label">Message</label>
+                                <textarea class="form-control" id="contact-message" name="message" rows="5" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <span>Send</span>
+                                <i class="fa-solid fa-arrow-right-long ms-3"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact info cards: Email, Phone, Visit Us -->
+                <div class="contact-info-cards">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="contact-info-card">
+                                <div class="contact-info-card-icon">
+                                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-info-card-body">
+                                    <h4 class="contact-info-card-label">Email Address</h4>
+                                    <p class="contact-info-card-value mb-0">info@mosc.in</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-info-card">
+                                <div class="contact-info-card-icon">
+                                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-info-card-body">
+                                    <h4 class="contact-info-card-label">Phone Number</h4>
+                                    <p class="contact-info-card-value mb-0">+91-481-2300-700</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-info-card contact-info-card-wide">
+                                <div class="contact-info-card-icon">
+                                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-info-card-body">
+                                    <h4 class="contact-info-card-label">Visit Us</h4>
+                                    <p class="contact-info-card-value mb-0">
+                                        Malankara Orthodox Church<br>
+                                        Catholicate Palace<br>
+                                        Devalokam P.O., (Via) Muttambalam<br>
+                                        Kottayam – 686 004<br>
+                                        Kerala, India
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+        <div class="row">
+            <div class="col-lg-4 footer-section-1">
+                <span class="contact-title">CONTACT US</span>
+                <form action="https://www.syromalabarchurch.in/save_contact_us" class="" id="contact-form" autocomplete="off" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="_token" value="e9515a944eb16aab9231ea6154fd9ee3" />
+                    <div class="contact-us">
+                        <div class="form-floating mb-2 subscribe-email-container">
+                            <input data-validation="required" type="text" class="form-control subscribe-email" name="full_name" id="footer-contact-name" placeholder="Enter Your Name">
+                            <label for="footer-contact-name">Name</label>
+                        </div>
+                        <div class="form-floating mb-2 subscribe-email-container">
+                            <input data-validation="required|valid_email" type="email" class="form-control subscribe-email" name="email_address" id="footer-contact-email" placeholder="name@example.com">
+                            <label for="footer-contact-email">Email</label>
+                        </div>
+                        <div class="form-floating mb-2 subscribe-email-container">
+                            <input data-validation="numeric" type="tel" class="form-control subscribe-email" name="phone_number" id="footer-contact-phone" placeholder="Phone">
+                            <label for="footer-contact-phone">Phone</label>
+                        </div>
+                        <div class="form-floating mb-4 subscribe-email-container">
+                            <textarea data-validation="required" class="form-control subscribe-email" cols="3" name="feedback" placeholder="Message" id="footer-contact-message"></textarea>
+                            <label for="footer-contact-message">Message</label>
+                        </div>
+                        <button type="submit" class="primary-button submit-btn">
+                            <span>Submit</span>
+                            <i class="fa-solid fa-arrow-right-long ms-3"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 footer-section-2 ps-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-widget">
+                            <h4 class="mb-4">Quick Links</h4>
+                            <div id="quicklinks"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-widget">
+                            <h4 class="mb-4">Upcoming Events</h4>
+                            <div id="latest_events"></div>
+                        </div>
+                        <div class="social-media">
+                            <h6 class="mb-2">Social With Us</h6>
+                            <ul id="socialmedias"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 footer-section-2 pe-5">
+                <div class="footer-widget">
+                    <h4 class="mb-4">Contact Information</h4>
+                    <p class="mb-1">Headquarters:</p>
+                    <p class="mb-1">Catholicate Palace<br>Devalokam, Kottayam<br>Kerala, India</p>
+                    <p class="mb-1">Phone: +91-481-2300-700</p>
+                    <p class="mb-0">Email: info@mosc.in</p>
+                </div>
+            </div>
+        </div>
+        <div class="row footer-bottom-row">
+            <div class="col-lg-4 footer-section-11 d-none d-lg-block">
+                <ul>
+                    <li class="float-end"><a href="about-us.html"> Terms & Conditions</a></li>
+                    <li class="float-end"><a href="about-us.html"> Disclaimers</a></li>
+                    <li class="float-end copy-right"><a href="index.html"> © 2023 Syro-Malabar Church</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-8 footer-section-2 made-by pe-5 ">
+                <ul class="d-none d-lg-block">
+                    <li class="float-end">
+                        <p class="text-white">Made with <i class="fa-solid fa-heart text-danger"></i> by <a href="about-us.html#!"><img class="lozad" width="60" data-src="http://www.syromalabarchurch.in/assets/images/resources/smcim_footer.svg" alt="SMCIM"></a></p>
+                    </li>
+                </ul>
+                <div class="footer-bottom">
+                    <p class="d-block d-lg-none w-100"><a href="about-us.html#!" class="text-start"> Terms & Conditions</a> <a href="about-us.html#!" class="float-end"> Disclaimers</a></p>
+                    <p class="text-white text-center mb-2 d-block d-lg-none">Made with <i class="fa-solid fa-heart text-danger"></i> by <a href="about-us.html#!"><img class="lozad" width="60" data-src="http://www.syromalabarchurch.in/assets/images/resources/smcim_footer.svg" alt="SMCIM"></a></p>
+                    <p class="text-white text-center mb-2 d-block d-lg-none">© 2023 Syro Malabar Church</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/lozad.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <script src="assets/js/tiny-slider.js"></script>
+  <script src="assets/js/glightbox.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/scripts/validation.js"></script>
+
+</body>
+
+</html>

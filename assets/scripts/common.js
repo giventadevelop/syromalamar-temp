@@ -141,9 +141,10 @@ function loadBreadCrumb() {
 
     const sectionSize = sections.length - 1;
     let formattedSection = '', breadcrumbTitleWord = '';
-    let breadCrumbHtml = `<li class="breadcrumb-item"><a href="${baseURL}">Home</a></li>`;
+    let breadCrumbHtml = `<li class="breadcrumb-item"><a href="index.html">Home</a></li>`;
 
     breadCrumbHtml += sections.map((section, idx) => {
+        section = section.replace(/\.html$/i, "");
         formattedSection = section.replace(/_/g, " ").replace(/\b\w/g, (match) => match.toUpperCase());
         formattedSection = formattedSection.replace(/-/g, " ");
         if (idx == sectionSize)
@@ -234,22 +235,31 @@ function fetchSideMenu() {
         $.each(response.data, function (idx, menu) {
             metaDetails = menu.meta;
             contentDetails = menu.contents;
-
-            var menuSize = contentDetails.length >= 10 ? 8 : 4;
+            var sideMenuName = (metaDetails.side_menu_name || "").trim();
+            var isSynod = sideMenuName.toLowerCase() === "synod";
 
             menuHtml = "";
-
-            menuHtml += `<div class="col-sm-${menuSize} mb-lg-5 mb-4">`;
-            menuHtml += `<img data-src="${metaDetails.side_menu_icon}" class="img-fluid float-start me-2 lozad menu-icon">`;
-            menuHtml += `<p class="m-0 mb-lg-3 mb-0 float-lg-start pe-2 offcanvas-menu-title"><strong>${metaDetails.side_menu_name}</strong></p>`;
-            menuHtml += `<div class="menu-clearfix clearfix border-bottom mb-3">&nbsp;</div>`;
-            menuHtml += `<div class="row m-0">`;
-
-            $.each(contentDetails, function (index, link) {
-                menuHtml += `<a class="col-6" href="${link.content_link}">${link.content_title}</a>`;
-            });
-
-            menuHtml += `</div></div>`;
+            if (isSynod) {
+                /* Holy Synod: single link, hide all submenu items */
+                menuHtml += `<div class="col-sm-4 mb-lg-5 mb-4">`;
+                menuHtml += `<img data-src="${metaDetails.side_menu_icon}" class="img-fluid float-start me-2 lozad menu-icon">`;
+                menuHtml += `<p class="m-0 mb-lg-3 mb-0 float-lg-start pe-2 offcanvas-menu-title"><strong>Holy Synod</strong></p>`;
+                menuHtml += `<div class="menu-clearfix clearfix border-bottom mb-3">&nbsp;</div>`;
+                menuHtml += `<div class="row m-0">`;
+                menuHtml += `<a class="col-6" href="holy-synod.html">Holy Synod</a>`;
+                menuHtml += `</div></div>`;
+            } else {
+                var menuSize = contentDetails.length >= 10 ? 8 : 4;
+                menuHtml += `<div class="col-sm-${menuSize} mb-lg-5 mb-4">`;
+                menuHtml += `<img data-src="${metaDetails.side_menu_icon}" class="img-fluid float-start me-2 lozad menu-icon">`;
+                menuHtml += `<p class="m-0 mb-lg-3 mb-0 float-lg-start pe-2 offcanvas-menu-title"><strong>${metaDetails.side_menu_name}</strong></p>`;
+                menuHtml += `<div class="menu-clearfix clearfix border-bottom mb-3">&nbsp;</div>`;
+                menuHtml += `<div class="row m-0">`;
+                $.each(contentDetails, function (index, link) {
+                    menuHtml += `<a class="col-6" href="${link.content_link}">${link.content_title}</a>`;
+                });
+                menuHtml += `</div></div>`;
+            }
             sidemenus.append(menuHtml);
         });
         loadLazyImages();
@@ -302,6 +312,7 @@ function fetchSocialMedias() {
 
 function fetchQuickLinks() {
     const quicklinks = $("#quicklinks");
+    if (quicklinks.hasClass("quick-links-two-col")) return;
     quicklinks.html('');
 
     fetchData(apiEndpoints.quicklinks, function (response) {
@@ -455,19 +466,24 @@ function fetchTopMenu() {
         $.each(response.data.has_submenu, function (idx, menu) {
             metaDetails = menu.meta;
             contentDetails = menu.contents;
+            var menuName = (metaDetails.top_menu_name || "").trim();
+            var isSynod = menuName.toLowerCase() === "synod";
 
             menuHtml = "";
-            menuHtml += `<li class="nav-item dropdown ms-2 me-2"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">${metaDetails.top_menu_name}</a>`;
-            if (contentDetails)
-                menuHtml += `<ul class="dropdown-menu">`;
-            $.each(contentDetails, function (index, link) {
-                menuHtml += `<li><a class="dropdown-item" href="${link.content_link}">${link.main_menu_name}</a></li>`;
-            });
-
-            if (contentDetails)
-                menuHtml += `</ul>`;
-
-            menuHtml += `</li>`;
+            if (isSynod) {
+                /* Holy Synod: single link, no dropdown/submenu items */
+                menuHtml += `<li class="nav-item ms-2 me-2"><a class="nav-link" href="holy-synod.html">Holy Synod</a></li>`;
+            } else {
+                menuHtml += `<li class="nav-item dropdown ms-2 me-2"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">${metaDetails.top_menu_name}</a>`;
+                if (contentDetails)
+                    menuHtml += `<ul class="dropdown-menu">`;
+                $.each(contentDetails, function (index, link) {
+                    menuHtml += `<li><a class="dropdown-item" href="${link.content_link}">${link.main_menu_name}</a></li>`;
+                });
+                if (contentDetails)
+                    menuHtml += `</ul>`;
+                menuHtml += `</li>`;
+            }
             topmenus.append(menuHtml);
         });
 
@@ -484,6 +500,28 @@ function fetchTopMenu() {
 
                 topmenus.append(menuHtml);
             });
+
+        var firstLi = $("#topmenus > li:first");
+        if (firstLi.length) {
+            firstLi.find(".dropdown-toggle, .nav-link").first().text("Catholicate").attr("href", "catholicate.html").removeClass("dropdown-toggle").attr("data-bs-toggle", "");
+            firstLi.removeClass("dropdown");
+            firstLi.find(".dropdown-menu").remove();
+            firstLi.after('<li class="nav-item ms-2 me-2"><a class="nav-link" href="administration.html">Administration</a></li>');
+        }
+
+        /* Hide Eparchies, Major Archbishop, and Curia menus by marking their li */
+        $("#topmenus > li").each(function () {
+            var menuText = $(this).find(".dropdown-toggle, .nav-link").first().text().trim().toLowerCase();
+            if (menuText.indexOf("eparch") >= 0) {
+                $(this).addClass("menu-eparchies");
+            }
+            if (menuText.indexOf("major archbishop") >= 0) {
+                $(this).addClass("menu-major-archbishop");
+            }
+            if (menuText.indexOf("curia") >= 0) {
+                $(this).addClass("menu-curia");
+            }
+        });
 
     }, {}, cacheTimes.minTime);
 }

@@ -32,7 +32,7 @@ function fetchBanners() {
     // Only show the first two images and replace them with local images
     var localImages = [
       "assets/images/mosc_images/bava_thirumeni_pope_visit.jpeg",
-      "assets/images/mosc_images/Malankara_Orthodox_Palace_Slider.jpeg"
+      "assets/images/mosc_images/Malankara_Orthodox_Palace_Slider_Image.jpeg"
     ];
     
     // Only process first 2 banners
@@ -154,11 +154,21 @@ function fetchSaints() {
       return;
 
     var saintsHtml = "";
-    $.each(response.data.contents, function (idx, saint) {
+    var firstFour = (response.data.contents || []).slice(0, 4);
+    $.each(firstFour, function (idx, saint) {
+      var imgSrc = (idx === 0) ? 'assets/images/mosc_images/St_Mother_Mary.jpg'
+        : (idx === 1) ? 'assets/images/mosc_images/St_Baselios_Yeldho.jpg'
+        : (idx === 2) ? 'assets/images/mosc_images/St_Geevarghese.jpg'
+        : (idx === 3) ? 'assets/images/mosc_images/St_Gregorios_Parumala.jpg' : saint.saint_image;
+      var name = (idx === 0) ? 'St.Mary Mother of God'
+        : (idx === 1) ? 'St. Baselios Yeldho'
+        : (idx === 2) ? 'St. Geevarghese'
+        : (idx === 3) ? 'St. Gregorios Of Parumala' : saint.saint_name;
+      var saintHref = (idx === 0) ? 'st-mary-mother-of-god.html' : (idx === 1) ? 'st-baselios-yeldho.html' : (idx === 2) ? 'st-geevarghese-mar-dionysius-vattasseril.html' : (idx === 3) ? 'st-gregorios-of-parumala.html' : 'saints.html';
       saintsHtml = "";
-      saintsHtml += `<li><div class="our-saints-card d-flex align-items-center"><div class="our-saints-img me-3">`;
-      saintsHtml += `<figure><img loading="lazy" class="lozad" data-src="${saint.saint_image}" alt="${saint.saint_name}"></figure></div>`;
-      saintsHtml += `<div class="our-saints-title"><h6>${saint.saint_name}</h6></div></div></li>`;
+      saintsHtml += `<li><a href="${saintHref}" class="unset-link"><div class="our-saints-card d-flex align-items-center"><div class="our-saints-img me-3">`;
+      saintsHtml += `<figure><img loading="lazy" class="lozad" data-src="${imgSrc}" alt="${name}"></figure></div>`;
+      saintsHtml += `<div class="our-saints-title"><h6>${name}</h6></div></div></a></li>`;
       saints.append(saintsHtml);
     });
 
@@ -212,25 +222,44 @@ function fetchMajorArchBishop() {
   const bishop_image_front_1 = $("#bishop_image_front_1");
   const bishop_image_front_2 = $("#bishop_image_front_2");
 
+  var bishopAboutShort = "His Holiness Baselios Marthoma Mathews III was enthroned as the Catholicos of the East & Malankara Metropolitan (the Supreme Head of the Malankara Orthodox Syrian Church of India) on Friday, 15th October 2021. His Holiness is the 92nd Primate on the Apostolic Throne of St. Thomas.";
+  var bishopNameText = 'His Holiness Baselios Marthoma Mathews III';
+
+  function setBishopContent() {
+    bishop_name.html(bishopNameText);
+    bishop_about.html(bishopAboutShort);
+    bishop_image_front_1.attr('src', 'assets/images/mosc_images/Baselios_Marthoma_Mathews_III.jpg');
+    bishop_image_front_1.attr('alt', bishopNameText);
+    bishop_image_front_2.attr('src', 'assets/images/mosc_images/Baselios_Marthoma_Mathews_III_2.webp');
+    bishop_image_front_2.attr('alt', bishopNameText);
+  }
+
+  setBishopContent();
+
   fetchData(apiEndpoints.majorarchbishop, function (response) {
     addLanguageChangeMethod(fetchMajorArchBishop);
 
-    if (!response.status)
+    if (!response.status) {
+      setBishopContent();
       return;
+    }
 
     const majorArchBishopDetails = response.data;
-
-    bishop_name.html('His Holiness Baselios Marthoma Mathews III');
-    bishop_about.html("His Holiness Baselios Marthoma Mathews III was enthroned as the Catholicos of the East & Malankara Metropolitan (the Supreme Head of the Malankara Orthodox Syrian Church of India) on Friday, 15th October 2021. His Holiness is the 92nd Primate on the Apostolic Throne of St. Thomas.");
-
+    bishop_name.html(bishopNameText);
+    bishop_about.html(bishopAboutShort);
     bishop_image_front_1.attr('src', 'assets/images/mosc_images/Baselios_Marthoma_Mathews_III.jpg');
-    bishop_image_front_1.attr('alt', majorArchBishopDetails.bishop_name);
+    bishop_image_front_1.attr('alt', majorArchBishopDetails.bishop_name || bishopNameText);
     bishop_image_front_2.attr('src', 'assets/images/mosc_images/Baselios_Marthoma_Mathews_III_2.webp');
-    bishop_image_front_2.attr('alt', majorArchBishopDetails.bishop_name);
+    bishop_image_front_2.attr('alt', majorArchBishopDetails.bishop_name || bishopNameText);
 
     loadLazyImages();
 
   }, {}, cacheTimes.minTime);
+
+  if (bishop_about.length) {
+    setTimeout(setBishopContent, 350);
+    setTimeout(setBishopContent, 1000);
+  }
 }
 
 
@@ -614,6 +643,7 @@ const bannerSlider = () => {
 
 
 const saintsSlider = () => {
+  if (!$("#saints").length || !$("#saints li").length) return;
   tns({
     container: ".our-saints-slider",
     // items: 3,
@@ -628,7 +658,7 @@ const saintsSlider = () => {
     controls: true,
     nav: false,
     loop: true,
-    controlsContainer: "#customize-controls",
+    controlsContainer: "#saints-customize-controls",
     responsive: {
       640: {
         //   edgePadding: 20,

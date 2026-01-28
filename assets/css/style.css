@@ -639,7 +639,7 @@ background: red; */
 }
 
 .logo-container#navbar.sticky .logo-box-img img {
-  width: 45px;
+  width: 55px;
 }
 
 .logo-container#navbar.sticky .logo-box-text h1 {
@@ -659,6 +659,12 @@ background: red; */
   padding-left: 2rem;
 }
 
+/* Navbar logo image - a little bigger (default 80px, was 60px) */
+#navbar.logo-container .logo-box-img img {
+  width: 80px;
+  height: auto;
+}
+
 @media screen and (max-width: 576px) {
   #navbar.logo-container .logo-box .logo-box-img .logo-img-div {
     padding: 1rem 0 1rem 0.5rem !important;
@@ -673,7 +679,7 @@ background: red; */
   }
 
   #navbar.logo-container .logo-box .logo-box-img img {
-    width: 35px;
+    width: 42px;
   }
 
   #navbar.logo-container .logo-box .logo-box-text .ms-4 {
@@ -697,7 +703,7 @@ background: red; */
   }
 
   .logo-container#navbar.sticky .logo-box-img img {
-    width: 30px !important;
+    width: 36px !important;
   }
 
   .logo-container#navbar.sticky .logo-box-text h1 {
@@ -3151,6 +3157,24 @@ span.newsEventDate {
     bottom: 0;
     opacity: 0;
   }
+}
+
+/* Hide specific topmenu nav items (li[3], li[7]); Synod (li[5]) is shown */
+#topmenus li:nth-child(3),
+#topmenus li:nth-child(7) {
+  display: none !important;
+}
+
+/* Hide Eparchies, Major Archbishop, and Curia menus */
+#topmenus li.menu-eparchies,
+#topmenus li.menu-major-archbishop,
+#topmenus li.menu-curia {
+  display: none !important;
+}
+
+/* Hide menu: first ul's li in navbar (#navbarSupportedContent/ul[1]/li) */
+#navbarSupportedContent > ul:first-of-type > li {
+  display: none !important;
 }
 
 /* Snackbar toast */

@@ -1,0 +1,45 @@
+Image Enhancement Prompt for Nano Banana Image Editor
+
+Target Image: assets/images/mosc_images/Malankara_Orthodox_Palace_Slider.jpeg
+
+ENHANCEMENT INSTRUCTIONS:
+
+1. BRIGHTNESS AND LIGHTING IMPROVEMENTS:
+   - Increase overall image brightness by 20-30% to make the building appear more vibrant and well-lit
+   - Enhance the building's white facade brightness to make it appear cleaner and more prominent
+   - Improve contrast to make architectural details more visible
+   - Adjust exposure to brighten the overcast sky while maintaining natural appearance
+   - Add subtle light enhancement to the building's facade to make it stand out better
+
+2. FRONT YARD IMPROVEMENTS:
+   - Remove or repair the worn-out dark paved area in the foreground
+   - Replace the worn-out section with clean, well-maintained paving or smooth surface
+   - Improve the sparse/dry ground area directly in front of the building foundation
+   - Enhance the green bushes to appear more vibrant and lush
+   - Ensure the front yard looks well-maintained and professional
+   - Keep the overall layout and positioning of vegetation unchanged
+
+3. TEXT REPLACEMENT:
+   - Locate the text "MALANKAAH MY DOC" on the central facade below the peaked roof section with the golden cross emblem
+   - Replace this text with "My Lord and My God"
+   - Maintain the same font style, size, and positioning
+   - Ensure the text color and appearance matches the original design aesthetic
+
+4. OVERALL LOOK AND FEEL:
+   - Enhance color saturation slightly to make the image more vibrant
+   - Improve sharpness and clarity of the building details
+   - Ensure the red-tiled roof sections appear more defined
+   - Make the golden cross emblem and religious iconography more prominent
+   - Enhance the shield-shaped emblem/crest visibility
+   - Improve the overall professional and polished appearance
+
+5. CONSTRAINTS:
+   - DO NOT modify the original building structure, architecture, or design
+   - DO NOT change the building's dimensions, windows, or architectural features
+   - DO NOT alter the surrounding landscape or add/remove permanent structures
+   - DO NOT change the position or layout of existing elements
+   - Only make aesthetic improvements: brightness, color, texture, and text replacement
+   - Maintain the building's authentic appearance and character
+
+FINAL RESULT:
+The image should appear brighter, more vibrant, with a well-maintained front yard, improved building visibility, and the text "My Lord and My God" replacing the original text, while preserving the authentic character and structure of the original building.
